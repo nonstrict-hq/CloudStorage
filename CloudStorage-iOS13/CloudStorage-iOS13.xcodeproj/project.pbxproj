@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		E20EC87E24B0639E006C9FB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20EC87D24B0639E006C9FB8 /* Assets.xcassets */; };
 		E20EC88124B0639E006C9FB8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20EC88024B0639E006C9FB8 /* Preview Assets.xcassets */; };
 		E20EC88424B0639E006C9FB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E20EC88224B0639E006C9FB8 /* LaunchScreen.storyboard */; };
+		E25CFD8A24C2EE5000EBA240 /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25CFD8924C2EE5000EBA240 /* MyColor.swift */; };
+		E25CFD9024C31F5000EBA240 /* CloudStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E25CFD8F24C31F5000EBA240 /* CloudStorage */; };
+		E25CFD9324C3242D00EBA240 /* CloudStorage+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25CFD9224C3242D00EBA240 /* CloudStorage+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,10 @@
 		E20EC88024B0639E006C9FB8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E20EC88324B0639E006C9FB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E20EC88524B0639E006C9FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E22E35F724B212160023F35A /* CloudStorage-iOS13.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "CloudStorage-iOS13.entitlements"; sourceTree = "<group>"; };
+		E25CFD8924C2EE5000EBA240 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
+		E25CFD8D24C3173E00EBA240 /* CloudStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CloudStorage; path = ..; sourceTree = "<group>"; };
+		E25CFD9224C3242D00EBA240 /* CloudStorage+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudStorage+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25CFD9024C31F5000EBA240 /* CloudStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +48,10 @@
 		E20EC86B24B0639E006C9FB8 = {
 			isa = PBXGroup;
 			children = (
+				E25CFD8D24C3173E00EBA240 /* CloudStorage */,
 				E20EC87624B0639E006C9FB8 /* CloudStorage-iOS13 */,
 				E20EC87524B0639E006C9FB8 /* Products */,
+				E25CFD8E24C31F5000EBA240 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +66,11 @@
 		E20EC87624B0639E006C9FB8 /* CloudStorage-iOS13 */ = {
 			isa = PBXGroup;
 			children = (
-				E20EC87724B0639E006C9FB8 /* AppDelegate.swift */,
-				E20EC87924B0639E006C9FB8 /* SceneDelegate.swift */,
-				E20EC87B24B0639E006C9FB8 /* ContentView.swift */,
-				E20EC87D24B0639E006C9FB8 /* Assets.xcassets */,
-				E20EC88224B0639E006C9FB8 /* LaunchScreen.storyboard */,
-				E20EC88524B0639E006C9FB8 /* Info.plist */,
+				E25CFD9124C322B200EBA240 /* Resources */,
 				E20EC87F24B0639E006C9FB8 /* Preview Content */,
+				E20EC87B24B0639E006C9FB8 /* ContentView.swift */,
+				E25CFD8924C2EE5000EBA240 /* MyColor.swift */,
+				E25CFD9224C3242D00EBA240 /* CloudStorage+Codable.swift */,
 			);
 			path = "CloudStorage-iOS13";
 			sourceTree = "<group>";
@@ -73,6 +81,26 @@
 				E20EC88024B0639E006C9FB8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E25CFD8E24C31F5000EBA240 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E25CFD9124C322B200EBA240 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E22E35F724B212160023F35A /* CloudStorage-iOS13.entitlements */,
+				E20EC87724B0639E006C9FB8 /* AppDelegate.swift */,
+				E20EC87924B0639E006C9FB8 /* SceneDelegate.swift */,
+				E20EC87D24B0639E006C9FB8 /* Assets.xcassets */,
+				E20EC88224B0639E006C9FB8 /* LaunchScreen.storyboard */,
+				E20EC88524B0639E006C9FB8 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +119,9 @@
 			dependencies = (
 			);
 			name = "CloudStorage-iOS13";
+			packageProductDependencies = (
+				E25CFD8F24C31F5000EBA240 /* CloudStorage */,
+			);
 			productName = "CloudStorage-iOS13";
 			productReference = E20EC87424B0639E006C9FB8 /* CloudStorage-iOS13.app */;
 			productType = "com.apple.product-type.application";
@@ -102,7 +133,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					E20EC87324B0639E006C9FB8 = {
 						CreatedOnToolsVersion = 11.5;
@@ -118,6 +149,8 @@
 				Base,
 			);
 			mainGroup = E20EC86B24B0639E006C9FB8;
+			packageReferences = (
+			);
 			productRefGroup = E20EC87524B0639E006C9FB8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,7 +180,9 @@
 			files = (
 				E20EC87824B0639E006C9FB8 /* AppDelegate.swift in Sources */,
 				E20EC87A24B0639E006C9FB8 /* SceneDelegate.swift in Sources */,
+				E25CFD9324C3242D00EBA240 /* CloudStorage+Codable.swift in Sources */,
 				E20EC87C24B0639E006C9FB8 /* ContentView.swift in Sources */,
+				E25CFD8A24C2EE5000EBA240 /* MyColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +226,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -251,6 +287,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -283,16 +320,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-iOS13/Resources/CloudStorage-iOS13.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-iOS13/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "CloudStorage-iOS13/Info.plist";
+				INFOPLIST_FILE = "CloudStorage-iOS13/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-iOS13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,16 +343,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-iOS13/Resources/CloudStorage-iOS13.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-iOS13/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "CloudStorage-iOS13/Info.plist";
+				INFOPLIST_FILE = "CloudStorage-iOS13/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-iOS13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -339,6 +384,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E25CFD8F24C31F5000EBA240 /* CloudStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CloudStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E20EC86C24B0639E006C9FB8 /* Project object */;
 }
