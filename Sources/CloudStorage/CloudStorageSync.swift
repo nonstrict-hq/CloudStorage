@@ -14,6 +14,7 @@ import UIKit
 public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
+    private let queue = DispatchQueue(label: "com.example.CloudStorageSync")
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
     private var observers: [String: () -> Void] = [:]
 
@@ -46,15 +47,17 @@ public class CloudStorageSync: ObservableObject {
 
         status = Status(date: Date(), source: .externalChange(reason), keys: keys)
 
-        // Note: Not threadsafe
-        for key in keys {
-            observers[key]?()
+        queue.async {
+            for key in keys {
+                self.observers[key]?()
+            }
         }
     }
 
-    // Note: Not threadsafe
     func setObserver(for key: String, handler: @escaping () -> Void) {
-        observers[key] = handler
+        queue.async {
+            self.observers[key] = handler
+        }
     }
 }
 
