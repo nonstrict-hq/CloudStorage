@@ -29,7 +29,7 @@
 		E20EC88524B0639E006C9FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E22E35F724B212160023F35A /* CloudStorage-iOS13.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "CloudStorage-iOS13.entitlements"; sourceTree = "<group>"; };
 		E25CFD8924C2EE5000EBA240 /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
-		E25CFD8D24C3173E00EBA240 /* CloudStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CloudStorage; path = ..; sourceTree = "<group>"; };
+		E25CFD8D24C3173E00EBA240 /* CloudStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CloudStorage; path = ../..; sourceTree = "<group>"; };
 		E25CFD9224C3242D00EBA240 /* CloudStorage+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudStorage+Codable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
