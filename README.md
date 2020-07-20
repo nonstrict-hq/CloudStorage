@@ -1,5 +1,5 @@
-@CloudStorage propperty wrapper
-===============================
+@CloudStorage property wrapper
+==============================
 
 Sync settings through iCloud key-value storage.
 
@@ -26,6 +26,7 @@ See also the example app in this repository.
 The same caveats apply as with key-value storage itself:
 
 > **Key-value storage** is for discrete values such as preferences, settings, and simple app state.
+>
 > Use iCloud key-value storage for small amounts of data: stocks or weather information, locations, bookmarks, a recent documents list, settings and preferences, and simple game state. Every app submitted to the App Store or Mac App Store should take advantage of key-value storage.
 
 From Apple's documenation on [choosing the proper iCloud Storage API](https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/iCloudFundametals.html#//apple_ref/doc/uid/TP40012094-CH6-SW28)
