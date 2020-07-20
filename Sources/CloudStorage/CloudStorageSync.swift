@@ -14,7 +14,6 @@ import UIKit
 public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
-    private let queue = DispatchQueue(label: "com.example.CloudStorageSync")
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
     private var observers: [String: () -> Void] = [:]
 
@@ -47,7 +46,9 @@ public class CloudStorageSync: ObservableObject {
 
         status = Status(date: Date(), source: .externalChange(reason), keys: keys)
 
-        queue.async {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
             for key in keys {
                 self.observers[key]?()
             }
@@ -55,9 +56,24 @@ public class CloudStorageSync: ObservableObject {
     }
 
     func setObserver(for key: String, handler: @escaping () -> Void) {
-        queue.async {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
             self.observers[key] = handler
         }
+    }
+
+    // Note:
+    // As per the documentation of NSUbiquitousKeyValueStore.synchronize,
+    // it is not nessesary to call .synchronize all the time.
+    //
+    // However, during developement, I very often quit or relaunch an app via Xcode debugger.
+    // This causes the app to be killed before in-memory changes are persisted to disk.
+    //
+    // By excessively calling .synchronize() all the time, changes are persisted to disk.
+    // This way, when working with Xcode, changes aren't constantly being reverted.
+    internal func synchronize() {
+        ubiquitousKvs.synchronize()
     }
 }
 

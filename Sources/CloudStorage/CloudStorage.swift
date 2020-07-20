@@ -31,10 +31,12 @@ private let sync = CloudStorageSync.shared
             set: { newValue in
                 backing.value = newValue
                 syncSet(newValue)
+                sync.synchronize()
             })
         self._setValue = { (newValue: Value) in
             backing.value = newValue
             syncSet(newValue)
+            sync.synchronize()
         }
 
         sync.setObserver(for: key) { [weak backing] in
