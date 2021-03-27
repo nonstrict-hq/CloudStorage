@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E22D659F260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22D659E260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift */; };
+		E22D65A1260F3F2A00F3E1B3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22D65A0260F3F2A00F3E1B3 /* ContentView.swift */; };
+		E22D65A3260F3F2A00F3E1B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E22D65A2260F3F2A00F3E1B3 /* Assets.xcassets */; };
+		E22D65A6260F3F2A00F3E1B3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E22D65A5260F3F2A00F3E1B3 /* Preview Assets.xcassets */; };
+		E22D65BA260F43AE00F3E1B3 /* CloudStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E22D65B9260F43AE00F3E1B3 /* CloudStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudStorage-tvOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E22D659E260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage_tvOS13App.swift; sourceTree = "<group>"; };
+		E22D65A0260F3F2A00F3E1B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E22D65A2260F3F2A00F3E1B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E22D65A5260F3F2A00F3E1B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E22D65A7260F3F2A00F3E1B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E22D65B6260F436C00F3E1B3 /* CloudStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CloudStorage; path = ../..; sourceTree = "<group>"; };
+		E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS13.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CloudStorage-tvOS13.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E22D6598260F3F2A00F3E1B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E22D65BA260F43AE00F3E1B3 /* CloudStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E22D6592260F3F2A00F3E1B3 = {
+			isa = PBXGroup;
+			children = (
+				E22D65B6260F436C00F3E1B3 /* CloudStorage */,
+				E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */,
+				E22D659C260F3F2A00F3E1B3 /* Products */,
+				E22D65B8260F43AE00F3E1B3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E22D659C260F3F2A00F3E1B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */ = {
+			isa = PBXGroup;
+			children = (
+				E22D65C0260F44E700F3E1B3 /* Resources */,
+				E22D659E260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift */,
+				E22D65A0260F3F2A00F3E1B3 /* ContentView.swift */,
+				E22D65A4260F3F2A00F3E1B3 /* Preview Content */,
+			);
+			path = "CloudStorage-tvOS13";
+			sourceTree = "<group>";
+		};
+		E22D65A4260F3F2A00F3E1B3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E22D65A5260F3F2A00F3E1B3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E22D65B8260F43AE00F3E1B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E22D65C0260F44E700F3E1B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS13.entitlements */,
+				E22D65A2260F3F2A00F3E1B3 /* Assets.xcassets */,
+				E22D65A7260F3F2A00F3E1B3 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS13" */;
+			buildPhases = (
+				E22D6597260F3F2A00F3E1B3 /* Sources */,
+				E22D6598260F3F2A00F3E1B3 /* Frameworks */,
+				E22D6599260F3F2A00F3E1B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CloudStorage-tvOS13";
+			packageProductDependencies = (
+				E22D65B9260F43AE00F3E1B3 /* CloudStorage */,
+			);
+			productName = "CloudStorage-tvOS13";
+			productReference = E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E22D6593260F3F2A00F3E1B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					E22D659A260F3F2A00F3E1B3 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS13" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E22D6592260F3F2A00F3E1B3;
+			productRefGroup = E22D659C260F3F2A00F3E1B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E22D6599260F3F2A00F3E1B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E22D65A6260F3F2A00F3E1B3 /* Preview Assets.xcassets in Resources */,
+				E22D65A3260F3F2A00F3E1B3 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E22D6597260F3F2A00F3E1B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E22D65A1260F3F2A00F3E1B3 /* ContentView.swift in Sources */,
+				E22D659F260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E22D65A8260F3F2A00F3E1B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+			};
+			name = Debug;
+		};
+		E22D65A9260F3F2A00F3E1B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 14.3;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E22D65AB260F3F2A00F3E1B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS13/Resources/CloudStorage-tvOS13.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS13/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "CloudStorage-tvOS13/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS13";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+			};
+			name = Debug;
+		};
+		E22D65AC260F3F2A00F3E1B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS13/Resources/CloudStorage-tvOS13.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS13/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "CloudStorage-tvOS13/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS13";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS13" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E22D65A8260F3F2A00F3E1B3 /* Debug */,
+				E22D65A9260F3F2A00F3E1B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS13" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E22D65AB260F3F2A00F3E1B3 /* Debug */,
+				E22D65AC260F3F2A00F3E1B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E22D65B9260F43AE00F3E1B3 /* CloudStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CloudStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E22D6593260F3F2A00F3E1B3 /* Project object */;
+}
