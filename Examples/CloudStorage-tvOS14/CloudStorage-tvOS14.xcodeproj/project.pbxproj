@@ -15,14 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudStorage-tvOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CloudStorage-tvOS14.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22D659E260F3F2A00F3E1B3 /* CloudStorage_tvOS13App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage_tvOS13App.swift; sourceTree = "<group>"; };
 		E22D65A0260F3F2A00F3E1B3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E22D65A2260F3F2A00F3E1B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E22D65A5260F3F2A00F3E1B3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E22D65A7260F3F2A00F3E1B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E22D65B6260F436C00F3E1B3 /* CloudStorage */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CloudStorage; path = ../..; sourceTree = "<group>"; };
-		E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS13.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CloudStorage-tvOS13.entitlements"; sourceTree = "<group>"; };
+		E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS14.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CloudStorage-tvOS14.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				E22D65B6260F436C00F3E1B3 /* CloudStorage */,
-				E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */,
+				E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS14 */,
 				E22D659C260F3F2A00F3E1B3 /* Products */,
 				E22D65B8260F43AE00F3E1B3 /* Frameworks */,
 			);
@@ -50,12 +50,12 @@
 		E22D659C260F3F2A00F3E1B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */,
+				E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS14.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */ = {
+		E22D659D260F3F2A00F3E1B3 /* CloudStorage-tvOS14 */ = {
 			isa = PBXGroup;
 			children = (
 				E22D65C0260F44E700F3E1B3 /* Resources */,
@@ -63,7 +63,7 @@
 				E22D65A0260F3F2A00F3E1B3 /* ContentView.swift */,
 				E22D65A4260F3F2A00F3E1B3 /* Preview Content */,
 			);
-			path = "CloudStorage-tvOS13";
+			path = "CloudStorage-tvOS14";
 			sourceTree = "<group>";
 		};
 		E22D65A4260F3F2A00F3E1B3 /* Preview Content */ = {
@@ -84,7 +84,7 @@
 		E22D65C0260F44E700F3E1B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS13.entitlements */,
+				E22D65BC260F448000F3E1B3 /* CloudStorage-tvOS14.entitlements */,
 				E22D65A2260F3F2A00F3E1B3 /* Assets.xcassets */,
 				E22D65A7260F3F2A00F3E1B3 /* Info.plist */,
 			);
@@ -94,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */ = {
+		E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS14 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS13" */;
+			buildConfigurationList = E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS14" */;
 			buildPhases = (
 				E22D6597260F3F2A00F3E1B3 /* Sources */,
 				E22D6598260F3F2A00F3E1B3 /* Frameworks */,
@@ -106,12 +106,12 @@
 			);
 			dependencies = (
 			);
-			name = "CloudStorage-tvOS13";
+			name = "CloudStorage-tvOS14";
 			packageProductDependencies = (
 				E22D65B9260F43AE00F3E1B3 /* CloudStorage */,
 			);
 			productName = "CloudStorage-tvOS13";
-			productReference = E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS13.app */;
+			productReference = E22D659B260F3F2A00F3E1B3 /* CloudStorage-tvOS14.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +128,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS13" */;
+			buildConfigurationList = E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS14" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +141,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS13 */,
+				E22D659A260F3F2A00F3E1B3 /* CloudStorage-tvOS14 */,
 			);
 		};
 /* End PBXProject section */
@@ -292,21 +292,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS13/Resources/CloudStorage-tvOS13.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS14/Resources/CloudStorage-tvOS14.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS13/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS14/Preview Content\"";
+				DEVELOPMENT_TEAM = BQF78J8BF9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "CloudStorage-tvOS13/Resources/Info.plist";
+				INFOPLIST_FILE = "CloudStorage-tvOS14/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS13";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Debug;
 		};
@@ -315,27 +314,27 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS13/Resources/CloudStorage-tvOS13.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "CloudStorage-tvOS14/Resources/CloudStorage-tvOS14.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS13/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CloudStorage-tvOS14/Preview Content\"";
+				DEVELOPMENT_TEAM = BQF78J8BF9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "CloudStorage-tvOS13/Resources/Info.plist";
+				INFOPLIST_FILE = "CloudStorage-tvOS14/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS13";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.CloudStorage-tvOS14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 14.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS13" */ = {
+		E22D6596260F3F2A00F3E1B3 /* Build configuration list for PBXProject "CloudStorage-tvOS14" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E22D65A8260F3F2A00F3E1B3 /* Debug */,
@@ -344,7 +343,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS13" */ = {
+		E22D65AA260F3F2A00F3E1B3 /* Build configuration list for PBXNativeTarget "CloudStorage-tvOS14" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E22D65AB260F3F2A00F3E1B3 /* Debug */,
