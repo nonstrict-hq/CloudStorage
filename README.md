@@ -18,6 +18,12 @@ Make sure you enable the "key-value storage" service in the iCloud capability. S
 @CloudStorage("numberOfItems") var numberOfItems: Int = 0
 @CloudStorage("orientation") var orientation: String?
 ```
+In your view add a property
+
+```swift
+@ObservedObject var cloudStorageSync = CloudStorageSync.shared
+```
+to  reveive updated values.
 
 See also the example app in this repository.
 
