@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 private let sync = CloudStorageSync.shared
 
@@ -28,19 +29,49 @@ private let sync = CloudStorageSync.shared
         self.backingObject = backing
         self.projectedValue = Binding(
             get: { backing.value },
-            set: { newValue in
+            set: { [weak holder] newValue in
                 backing.value = newValue
+                holder?.sender?()
                 syncSet(newValue)
                 sync.synchronize()
             })
-        self._setValue = { (newValue: Value) in
+        self._setValue = { [weak holder] (newValue: Value) in
             backing.value = newValue
+            holder?.sender?()
             syncSet(newValue)
             sync.synchronize()
         }
 
         sync.setObserver(for: key) { [weak backing] in
             backing?.value = syncGet()
+        }
+    }
+
+    class Holder{
+        var sender: (() -> Void)?
+        init(){}
+    }
+
+    var holder = Holder()
+
+    public static subscript<OuterSelf: ObservableObject>(
+        _enclosingInstance observed: OuterSelf,
+        wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, Value>,
+        storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
+    ) -> Value {
+        get {
+            if observed[keyPath: storageKeyPath].holder.sender == nil {
+                observed[keyPath: storageKeyPath].holder.sender = { [weak observed] in
+                    (observed?.objectWillChange as? ObservableObjectPublisher)?.send()
+                }
+            }
+            return observed[keyPath: storageKeyPath].wrappedValue
+        }
+        set {
+            if let subject = observed.objectWillChange as? ObservableObjectPublisher {
+                subject.send()
+                observed[keyPath: storageKeyPath].wrappedValue = newValue
+            }
         }
     }
 }
