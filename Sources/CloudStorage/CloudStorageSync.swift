@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 #if canImport(UIKit)
 import UIKit
@@ -15,7 +16,7 @@ public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
-    private var observers: [String: () -> Void] = [:]
+    private var publishers: [String: [ObservableObjectPublisher]] = [:]
 
     @Published private(set) public var status: Status
 
@@ -44,22 +45,32 @@ public class CloudStorageSync: ObservableObject {
         let keys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
         let reason = ChangeReason(rawValue: reasonRaw)
 
-        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
             self.status = Status(date: Date(), source: .externalChange(reason), keys: keys)
 
             for key in keys {
-                self.observers[key]?()
+                for publisher in self.publishers[key, default: []] {
+                    publisher.send()
+                }
             }
         }
     }
 
-    func setObserver(for key: String, handler: @escaping () -> Void) {
-        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+    func addObserver(for key: String, publisher: ObservableObjectPublisher) {
+        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
-            self.observers[key] = handler
+            self.publishers[key, default: []].append(publisher)
+        }
+    }
+
+    func removeObserver(publisher: ObservableObjectPublisher) {
+        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
+            self.publishers = self.publishers.mapValues { $0.filter { $0 !== publisher } }
         }
     }
 
@@ -91,9 +102,12 @@ extension CloudStorageSync {
         ubiquitousKvs.removeObject(forKey: key)
     }
 
-
     public func string(for key: String) -> String? {
         ubiquitousKvs.string(forKey: key)
+    }
+
+    public func url(for key: String) -> URL? {
+        ubiquitousKvs.string(forKey: key).flatMap(URL.init(string:))
     }
 
     public func array(for key: String) -> [Any]? {
@@ -134,6 +148,11 @@ extension CloudStorageSync {
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
+    public func set(_ value: URL?, for key: String) {
+        ubiquitousKvs.set(value?.absoluteString, forKey: key)
+        status = Status(date: Date(), source: .localChange, keys: [key])
+    }
+
     public func set(_ value: Data?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
@@ -149,22 +168,22 @@ extension CloudStorageSync {
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Int, for key: String) {
+    public func set(_ value: Int?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Int64, for key: String) {
+    public func set(_ value: Int64?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Double, for key: String) {
+    public func set(_ value: Double?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Bool, for key: String) {
+    public func set(_ value: Bool?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
