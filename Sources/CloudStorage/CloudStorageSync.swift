@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 #if canImport(UIKit)
 import UIKit
@@ -15,7 +16,7 @@ public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
-    private var observers: [String: () -> Void] = [:]
+    private var observers: [String: [KeyObserver]] = [:]
 
     @Published private(set) public var status: Status
 
@@ -50,16 +51,36 @@ public class CloudStorageSync: ObservableObject {
             self.status = Status(date: Date(), source: .externalChange(reason), keys: keys)
 
             for key in keys {
-                self.observers[key]?()
+                for observer in self.observers[key, default: []] {
+                    observer.keyChanged()
+                }
             }
         }
     }
 
-    func setObserver(for key: String, handler: @escaping () -> Void) {
+    internal func notifyObservers(for key: String) {
         // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
-            self.observers[key] = handler
+            for observer in self.observers[key, default: []] {
+                observer.keyChanged()
+            }
+        }
+    }
+
+    internal func addObserver(_ observer: KeyObserver, key: String) {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
+            self.observers[key, default: []].append(observer)
+        }
+    }
+
+    internal func removeObserver(_ observer: KeyObserver) {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
+            self.observers = self.observers.mapValues { $0.filter { $0 !== observer } }
         }
     }
 
@@ -91,9 +112,12 @@ extension CloudStorageSync {
         ubiquitousKvs.removeObject(forKey: key)
     }
 
-
     public func string(for key: String) -> String? {
         ubiquitousKvs.string(forKey: key)
+    }
+
+    public func url(for key: String) -> URL? {
+        ubiquitousKvs.string(forKey: key).flatMap(URL.init(string:))
     }
 
     public func array(for key: String) -> [Any]? {
@@ -134,6 +158,11 @@ extension CloudStorageSync {
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
+    public func set(_ value: URL?, for key: String) {
+        ubiquitousKvs.set(value?.absoluteString, forKey: key)
+        status = Status(date: Date(), source: .localChange, keys: [key])
+    }
+
     public func set(_ value: Data?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
@@ -149,22 +178,22 @@ extension CloudStorageSync {
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Int, for key: String) {
+    public func set(_ value: Int?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Int64, for key: String) {
+    public func set(_ value: Int64?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Double, for key: String) {
+    public func set(_ value: Double?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 
-    public func set(_ value: Bool, for key: String) {
+    public func set(_ value: Bool?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }

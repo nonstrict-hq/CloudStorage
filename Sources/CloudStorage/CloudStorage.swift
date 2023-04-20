@@ -6,50 +6,79 @@
 //
 
 import SwiftUI
+import Combine
 
 private let sync = CloudStorageSync.shared
 
 @propertyWrapper public struct CloudStorage<Value>: DynamicProperty {
-    private let _setValue: (Value) -> Void
-
-    @ObservedObject private var backingObject: CloudStorageBackingObject<Value>
-
-    public var projectedValue: Binding<Value>
+    @ObservedObject private var object: CloudStorageObject<Value>
 
     public var wrappedValue: Value {
-        get { backingObject.value }
-        nonmutating set { _setValue(newValue) }
+        get { object.value }
+        nonmutating set { object.value = newValue }
+    }
+
+    public var projectedValue: Binding<Value> {
+        Binding { object.value } set: { object.value = $0 }
     }
 
     public init(keyName key: String, syncGet: @escaping () -> Value, syncSet: @escaping (Value) -> Void) {
-        let value = syncGet()
+        self.object = CloudStorageObject(key: key, syncGet: syncGet, syncSet: syncSet)
+    }
 
-        let backing = CloudStorageBackingObject(value: value)
-        self.backingObject = backing
-        self.projectedValue = Binding(
-            get: { backing.value },
-            set: { newValue in
-                backing.value = newValue
-                syncSet(newValue)
-                sync.synchronize()
-            })
-        self._setValue = { (newValue: Value) in
-            backing.value = newValue
-            syncSet(newValue)
-            sync.synchronize()
+    public static subscript<OuterSelf: ObservableObject>(
+        _enclosingInstance instance: OuterSelf,
+        wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, Value>,
+        storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
+    ) -> Value {
+        get {
+            instance[keyPath: storageKeyPath].object.keyObserver.enclosingObjectWillChange = instance.objectWillChange as? ObservableObjectPublisher
+            return instance[keyPath: storageKeyPath].wrappedValue
         }
-
-        sync.setObserver(for: key) { [weak backing] in
-            backing?.value = syncGet()
+        set {
+            instance[keyPath: storageKeyPath].wrappedValue = newValue
         }
     }
 }
 
-internal class CloudStorageBackingObject<Value>: ObservableObject {
-    @Published var value: Value
+internal class KeyObserver {
+    weak var storageObjectWillChange: ObservableObjectPublisher?
+    weak var enclosingObjectWillChange: ObservableObjectPublisher?
 
-    init(value: Value) {
-        self.value = value
+    func keyChanged() {
+        storageObjectWillChange?.send()
+        enclosingObjectWillChange?.send()
+    }
+}
+
+@MainActor
+internal class CloudStorageObject<Value>: ObservableObject {
+    private let key: String
+    private let syncGet: () -> Value
+    private let syncSet: (Value) -> Void
+
+    let keyObserver = KeyObserver()
+
+    var value: Value {
+        get { syncGet() }
+        set {
+            syncSet(newValue)
+            sync.notifyObservers(for: key)
+            sync.synchronize()
+        }
+    }
+
+    init(key: String, syncGet: @escaping () -> Value, syncSet: @escaping (Value) -> Void) {
+        self.key = key
+        self.syncGet = syncGet
+        self.syncSet = syncSet
+
+        keyObserver.storageObjectWillChange = objectWillChange
+        sync.addObserver(keyObserver, key: key)
+    }
+
+    deinit {
+        sync.removeObserver(keyObserver)
     }
 }
 
@@ -93,8 +122,8 @@ extension CloudStorage where Value == URL {
     public init(wrappedValue: Value, _ key: String) {
         self.init(
             keyName: key,
-            syncGet: { sync.string(for: key).flatMap(URL.init(string:)) ?? wrappedValue },
-            syncSet: { newValue in sync.set(newValue.absoluteString, for: key) })
+            syncGet: { sync.url(for: key) ?? wrappedValue },
+            syncSet: { newValue in sync.set(newValue, for: key) })
     }
 }
 
@@ -165,8 +194,8 @@ extension CloudStorage where Value == URL? {
     public init(_ key: String) {
         self.init(
             keyName: key,
-            syncGet: { sync.string(for: key).flatMap(URL.init(string:)) },
-            syncSet: { newValue in sync.set(newValue?.absoluteString, for: key) })
+            syncGet: { sync.url(for: key) },
+            syncSet: { newValue in sync.set(newValue, for: key) })
     }
 }
 
