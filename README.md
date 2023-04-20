@@ -54,5 +54,5 @@ If you need any advanced capabilities to prevent data loss, consider using Cloud
 
 ## Authors
 
-[Nonstrict B.V.](https://nonstrict.eu), [Tom Lokhorst](https://github.com/tomlokhorst) & [Mathijs Kadijk](https://github.com/mac-cain13), released under [MIT License](LICENSE.md)
+[Nonstrict B.V.](https://nonstrict.eu), [Tom Lokhorst](https://github.com/tomlokhorst) & [Mathijs Kadijk](https://github.com/mac-cain13), released under [MIT License](LICENSE)
 
