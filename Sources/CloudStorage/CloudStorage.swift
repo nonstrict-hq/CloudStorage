@@ -25,6 +25,22 @@ private let sync = CloudStorageSync.shared
     public init(keyName key: String, syncGet: @escaping () -> Value, syncSet: @escaping (Value) -> Void) {
         self.object = CloudStorageObject(key: key, syncGet: syncGet, syncSet: syncSet)
     }
+
+    public static subscript<OuterSelf: ObservableObject>(
+        _enclosingInstance instance: OuterSelf,
+        wrapped wrappedKeyPath: ReferenceWritableKeyPath<OuterSelf, Value>,
+        storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
+    ) -> Value {
+        get {
+            return instance[keyPath: storageKeyPath].wrappedValue
+        }
+        set {
+            if let subject = instance.objectWillChange as? ObservableObjectPublisher {
+                subject.send()
+            }
+            instance[keyPath: storageKeyPath].wrappedValue = newValue
+        }
+    }
 }
 
 @MainActor
