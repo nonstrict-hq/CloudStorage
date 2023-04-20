@@ -45,7 +45,7 @@ public class CloudStorageSync: ObservableObject {
         let keys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
         let reason = ChangeReason(rawValue: reasonRaw)
 
-        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
             self.status = Status(date: Date(), source: .externalChange(reason), keys: keys)
