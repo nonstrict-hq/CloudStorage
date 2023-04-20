@@ -16,7 +16,7 @@ public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
-    private var observers: [String: [CloudStorageKeyObserver]] = [:]
+    private var observers: [String: [KeyObserver]] = [:]
 
     @Published private(set) public var status: Status
 
@@ -68,7 +68,7 @@ public class CloudStorageSync: ObservableObject {
         }
     }
 
-    internal func addObserver(_ observer: CloudStorageKeyObserver, key: String) {
+    internal func addObserver(_ observer: KeyObserver, key: String) {
         // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
@@ -76,7 +76,7 @@ public class CloudStorageSync: ObservableObject {
         }
     }
 
-    internal func removeObserver(_ observer: CloudStorageKeyObserver) {
+    internal func removeObserver(_ observer: KeyObserver) {
         // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {

@@ -10,6 +10,18 @@ import CloudStorage
 
 struct ContentView: View {
 
+    var body: some View {
+        NavigationStack {
+            NavigationLink("Detail") {
+                DetailView()
+            }
+        }
+    }
+}
+
+
+struct DetailView: View {
+
 
     var body: some View {
         VStack {
@@ -22,6 +34,7 @@ struct ContentView: View {
         .padding()
     }
 }
+
 
 struct TopView: View {
     @CloudStorage("myBool") var myBool = false
