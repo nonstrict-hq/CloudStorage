@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 import PackageDescription
 
 let package = Package(
@@ -7,6 +7,7 @@ let package = Package(
         .macOS(.v12),
         .iOS(.v14),
         .tvOS(.v14),
+        .watchOS(.v9),
     ],
     products: [
         .library(name: "CloudStorage", targets: ["CloudStorage"]),

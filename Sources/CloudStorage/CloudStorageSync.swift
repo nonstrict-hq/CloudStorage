@@ -31,7 +31,7 @@ public class CloudStorageSync: ObservableObject {
             object: nil)
         ubiquitousKvs.synchronize()
 
-        #if canImport(UIKit)
+        #if canImport(UIKit) && !os(watchOS)
         NotificationCenter.default.addObserver(
             ubiquitousKvs,
             selector: #selector(NSUbiquitousKeyValueStore.synchronize),
