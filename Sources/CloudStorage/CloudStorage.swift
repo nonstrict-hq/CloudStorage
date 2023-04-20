@@ -32,29 +32,34 @@ private let sync = CloudStorageSync.shared
         storage storageKeyPath: ReferenceWritableKeyPath<OuterSelf, Self>
     ) -> Value {
         get {
+            instance[keyPath: storageKeyPath].object.enclosingObjectWillChanges = instance.objectWillChange as? ObservableObjectPublisher
             return instance[keyPath: storageKeyPath].wrappedValue
         }
         set {
-            if let subject = instance.objectWillChange as? ObservableObjectPublisher {
-                subject.send()
-            }
             instance[keyPath: storageKeyPath].wrappedValue = newValue
         }
     }
 }
 
 @MainActor
-internal class CloudStorageObject<Value>: ObservableObject {
+internal class CloudStorageKeyObserver {
+    func keyChanged() {}
+}
+
+@MainActor
+internal class CloudStorageObject<Value>: CloudStorageKeyObserver, ObservableObject {
     private let key: String
     private let syncGet: () -> Value
     private let syncSet: (Value) -> Void
+
+    var enclosingObjectWillChanges: ObservableObjectPublisher?
 
     var value: Value {
         get { syncGet() }
         set {
             syncSet(newValue)
+            sync.notifyObservers(for: key)
             sync.synchronize()
-            objectWillChange.send()
         }
     }
 
@@ -63,11 +68,18 @@ internal class CloudStorageObject<Value>: ObservableObject {
         self.syncGet = syncGet
         self.syncSet = syncSet
 
-        sync.addObserver(for: key, publisher: objectWillChange)
+        super.init()
+
+        sync.addObserver(self, key: key)
     }
 
     deinit {
-        sync.removeObserver(publisher: objectWillChange)
+        sync.removeObserver(self)
+    }
+
+    override func keyChanged() {
+        objectWillChange.send()
+        enclosingObjectWillChanges?.send()
     }
 }
 

@@ -16,7 +16,7 @@ public class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
-    private var publishers: [String: [ObservableObjectPublisher]] = [:]
+    private var observers: [String: [CloudStorageKeyObserver]] = [:]
 
     @Published private(set) public var status: Status
 
@@ -51,26 +51,36 @@ public class CloudStorageSync: ObservableObject {
             self.status = Status(date: Date(), source: .externalChange(reason), keys: keys)
 
             for key in keys {
-                for publisher in self.publishers[key, default: []] {
-                    publisher.send()
+                for observer in self.observers[key, default: []] {
+                    observer.keyChanged()
                 }
             }
         }
     }
 
-    func addObserver(for key: String, publisher: ObservableObjectPublisher) {
-        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
+    internal func notifyObservers(for key: String) {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
-            self.publishers[key, default: []].append(publisher)
+            for observer in self.observers[key, default: []] {
+                observer.keyChanged()
+            }
         }
     }
 
-    func removeObserver(publisher: ObservableObjectPublisher) {
-        // Use main queue as synchronization queue to get exclusive accessing to publishers dictionary.
+    internal func addObserver(_ observer: CloudStorageKeyObserver, key: String) {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
         // Since main queue is needed anyway to change UI properties.
         DispatchQueue.main.async {
-            self.publishers = self.publishers.mapValues { $0.filter { $0 !== publisher } }
+            self.observers[key, default: []].append(observer)
+        }
+    }
+
+    internal func removeObserver(_ observer: CloudStorageKeyObserver) {
+        // Use main queue as synchronization queue to get exclusive accessing to observers dictionary.
+        // Since main queue is needed anyway to change UI properties.
+        DispatchQueue.main.async {
+            self.observers = self.observers.mapValues { $0.filter { $0 !== observer } }
         }
     }
 
