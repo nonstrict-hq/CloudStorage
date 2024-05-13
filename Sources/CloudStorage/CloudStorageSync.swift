@@ -152,6 +152,11 @@ extension CloudStorageSync {
         return ubiquitousKvs.bool(forKey: key)
     }
 
+    public func codable<T: Codable>(for key: String) -> T? {
+        guard let data = self.data(for: key) else { return nil }
+        return try? JSONDecoder().decode(T.self, from: data)
+    }
+
 
     public func set(_ value: String?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
@@ -196,6 +201,11 @@ extension CloudStorageSync {
     public func set(_ value: Bool?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
+    }
+
+    public func setCodable<T: Codable>(_ value: T?, for key: String) {
+        guard let data = try? JSONEncoder().encode(value) else { return }
+        self.set(data, for: key)
     }
 }
 

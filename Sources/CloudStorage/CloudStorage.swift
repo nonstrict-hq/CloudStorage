@@ -136,6 +136,16 @@ extension CloudStorage where Value == Data {
     }
 }
 
+extension CloudStorage where Value: Codable {
+    public init(wrappedValue: Value, _ key: String) {
+        self.init(
+            keyName: key,
+            syncGet: { sync.codable(for: key) ?? wrappedValue },
+            syncSet: { newValue in sync.setCodable(newValue, for: key) }
+        )
+    }
+}
+
 extension CloudStorage where Value: RawRepresentable, Value.RawValue == Int {
     public init(wrappedValue: Value, _ key: String) {
         self.init(
