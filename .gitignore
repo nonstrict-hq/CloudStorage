@@ -20,3 +20,4 @@ DerivedData
 *.ipa
 *.xcuserstate
 .build
+.swiftpm

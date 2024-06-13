@@ -8,9 +8,11 @@
 import SwiftUI
 import Combine
 
-private let sync = CloudStorageSync.shared
+@MainActor private let sync = CloudStorageSync.shared
 
-@propertyWrapper public struct CloudStorage<Value>: DynamicProperty {
+@propertyWrapper
+@MainActor
+public struct CloudStorage<Value>: DynamicProperty {
     @ObservedObject private var object: CloudStorageObject<Value>
 
     public var wrappedValue: Value {
@@ -41,7 +43,7 @@ private let sync = CloudStorageSync.shared
     }
 }
 
-internal class KeyObserver {
+@MainActor internal class KeyObserver {
     weak var storageObjectWillChange: ObservableObjectPublisher?
     weak var enclosingObjectWillChange: ObservableObjectPublisher?
 
@@ -78,7 +80,9 @@ internal class CloudStorageObject<Value>: ObservableObject {
     }
 
     deinit {
-        sync.removeObserver(keyObserver)
+        Task { @MainActor [keyObserver] in
+            sync.removeObserver(keyObserver)
+        }
     }
 }
 

@@ -11,8 +11,8 @@ import Combine
 #if canImport(UIKit)
 import UIKit
 #endif
-
-public class CloudStorageSync: ObservableObject {
+@MainActor
+public final class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()
 
     private let ubiquitousKvs: NSUbiquitousKeyValueStore
