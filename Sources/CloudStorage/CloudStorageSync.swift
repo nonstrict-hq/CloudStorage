@@ -11,6 +11,7 @@ import Combine
 #if canImport(UIKit)
 import UIKit
 #endif
+
 @MainActor
 public final class CloudStorageSync: ObservableObject {
     public static let shared = CloudStorageSync()

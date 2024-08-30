@@ -43,7 +43,8 @@ public struct CloudStorage<Value>: DynamicProperty {
     }
 }
 
-@MainActor internal class KeyObserver {
+@MainActor
+internal class KeyObserver {
     weak var storageObjectWillChange: ObservableObjectPublisher?
     weak var enclosingObjectWillChange: ObservableObjectPublisher?
 
