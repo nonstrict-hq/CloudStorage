@@ -87,6 +87,9 @@ internal class CloudStorageObject<Value>: ObservableObject {
     }
 }
 
+extension CloudStorage : Sendable where Value : Sendable {
+}
+
 extension CloudStorage where Value == Bool {
     public init(wrappedValue: Value, _ key: String) {
         self.init(
@@ -128,6 +131,15 @@ extension CloudStorage where Value == URL {
         self.init(
             keyName: key,
             syncGet: { sync.url(for: key) ?? wrappedValue },
+            syncSet: { newValue in sync.set(newValue, for: key) })
+    }
+}
+
+extension CloudStorage where Value == Date {
+    public init(wrappedValue: Value, _ key: String) {
+        self.init(
+            keyName: key,
+            syncGet: { sync.date(for: key) ?? wrappedValue },
             syncSet: { newValue in sync.set(newValue, for: key) })
     }
 }
@@ -204,11 +216,38 @@ extension CloudStorage where Value == URL? {
     }
 }
 
+extension CloudStorage where Value == Date? {
+    public init(_ key: String) {
+        self.init(
+            keyName: key,
+            syncGet: { sync.date(for: key) },
+            syncSet: { newValue in sync.set(newValue, for: key) })
+    }
+}
+
 extension CloudStorage where Value == Data? {
     public init(_ key: String) {
         self.init(
             keyName: key,
             syncGet: { sync.data(for: key) },
+            syncSet: { newValue in sync.set(newValue, for: key) })
+    }
+}
+
+extension CloudStorage {
+    public init<R>(_ key: String) where Value == R?, R: RawRepresentable, R.RawValue == String {
+        self.init(
+            keyName: key,
+            syncGet: { sync.rawRepresentable(for: key) },
+            syncSet: { newValue in sync.set(newValue, for: key) })
+    }
+}
+
+extension CloudStorage {
+    public init<R>(_ key: String) where Value == R?, R: RawRepresentable, R.RawValue == Int {
+        self.init(
+            keyName: key,
+            syncGet: { sync.rawRepresentable(for: key) },
             syncSet: { newValue in sync.set(newValue, for: key) })
     }
 }

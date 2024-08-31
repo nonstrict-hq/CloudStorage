@@ -129,6 +129,11 @@ extension CloudStorageSync {
         ubiquitousKvs.dictionary(forKey: key)
     }
 
+    public func date(for key: String) -> Date? {
+        guard let obj = ubiquitousKvs.object(forKey: key) else { return nil }
+        return obj as? Date
+    }
+
     public func data(for key: String) -> Data? {
         ubiquitousKvs.data(forKey: key)
     }
@@ -153,6 +158,18 @@ extension CloudStorageSync {
         return ubiquitousKvs.bool(forKey: key)
     }
 
+    public func rawRepresentable<R>(for key: String) -> R? where R: RawRepresentable, R.RawValue == String {
+        guard let str = ubiquitousKvs.string(forKey: key) else { return nil }
+        return R(rawValue: str)
+    }
+
+    public func rawRepresentable<R>(for key: String) -> R? where R: RawRepresentable, R.RawValue == Int {
+        if ubiquitousKvs.object(forKey: key) == nil { return nil }
+        let int = Int(ubiquitousKvs.longLong(forKey: key))
+        return R(rawValue: int)
+    }
+
+    //
 
     public func set(_ value: String?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
@@ -196,6 +213,16 @@ extension CloudStorageSync {
 
     public func set(_ value: Bool?, for key: String) {
         ubiquitousKvs.set(value, forKey: key)
+        status = Status(date: Date(), source: .localChange, keys: [key])
+    }
+
+    public func set<R>(_ value: R?, for key: String) where R: RawRepresentable, R.RawValue == String {
+        ubiquitousKvs.set(value?.rawValue, forKey: key)
+        status = Status(date: Date(), source: .localChange, keys: [key])
+    }
+
+    public func set<R>(_ value: R?, for key: String) where R: RawRepresentable, R.RawValue == Int {
+        ubiquitousKvs.set(value?.rawValue, forKey: key)
         status = Status(date: Date(), source: .localChange, keys: [key])
     }
 }
