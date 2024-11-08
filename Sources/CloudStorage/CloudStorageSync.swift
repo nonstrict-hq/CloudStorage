@@ -26,10 +26,15 @@ public final class CloudStorageSync: ObservableObject {
         status = Status(date: Date(), source: .initial, keys: [])
 
         NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didChangeExternally(notification:)),
-            name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-            object: nil)
+            forName: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+            object: nil,
+            queue: .main
+        ) { [weak self] notification in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                self.didChangeExternally(notification: notification)
+            }
+        }
         ubiquitousKvs.synchronize()
 
         #if canImport(UIKit) && !os(watchOS)
