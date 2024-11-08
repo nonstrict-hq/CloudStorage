@@ -46,7 +46,7 @@ public final class CloudStorageSync: ObservableObject {
         #endif
     }
 
-     private func didChangeExternally(notification: Notification) {
+    private func didChangeExternally(notification: Notification) {
         let reasonRaw = notification.userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? Int ?? -1
         let keys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
         let reason = ChangeReason(rawValue: reasonRaw)
