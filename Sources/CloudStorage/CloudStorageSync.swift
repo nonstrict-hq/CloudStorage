@@ -31,7 +31,7 @@ public final class CloudStorageSync: ObservableObject {
             queue: .main
         ) { [weak self] notification in
             guard let self else { return }
-            DispatchQueue.main.async {
+            MainActor.assumeIsolated {
                 self.didChangeExternally(notification: notification)
             }
         }
@@ -46,7 +46,7 @@ public final class CloudStorageSync: ObservableObject {
         #endif
     }
 
-    @objc private func didChangeExternally(notification: Notification) {
+     private func didChangeExternally(notification: Notification) {
         let reasonRaw = notification.userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? Int ?? -1
         let keys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] ?? []
         let reason = ChangeReason(rawValue: reasonRaw)
