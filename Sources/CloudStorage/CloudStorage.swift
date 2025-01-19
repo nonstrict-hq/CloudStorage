@@ -21,7 +21,7 @@ public struct CloudStorage<Value>: DynamicProperty {
     }
 
     public var projectedValue: Binding<Value> {
-        Binding { object.value } set: { object.value = $0 }
+        $object.value
     }
 
     public init(keyName key: String, syncGet: @escaping () -> Value, syncSet: @escaping (Value) -> Void) {
